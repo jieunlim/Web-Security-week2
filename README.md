@@ -8,9 +8,9 @@ The following **required** functionality is completed:
 
 1\. [x]  Required: Import the Starting Database
 
-2\. [ ]  Required: Set Up the Starting Code
+2\. [x]  Required: Set Up the Starting Code
 
-3\. [ ]  Required: Review code for Staff CMS for Users
+3\. [x]  Required: Review code for Staff CMS for Users
 
 4\. [ ]  Required: Complete Staff CMS for Salespeople
   * [ ]  Required: index.php
@@ -30,13 +30,13 @@ The following **required** functionality is completed:
   * [ ]  Required: new.php
   * [ ]  Required: edit.php
 
-7\. [ ]  Required: Add Data Validations
-  * [ ]  Required: Validate that no values are left blank.
-  * [ ]  Required: Validate that all string values are less than 255 characters.
-  * [ ]  Required: Validate that usernames contain only the whitelisted characters.
-  * [ ]  Required: Validate that phone numbers contain only the whitelisted characters.
-  * [ ]  Required: Validate that email addresses contain only whitelisted characters.
-  * [ ]  Required: Add *at least 5* other validations of your choosing.
+7\. [x]  Required: Add Data Validations
+  * [x]  Required: Validate that no values are left blank.
+  * [x]  Required: Validate that all string values are less than 255 characters.
+  * [x]  Required: Validate that usernames contain only the whitelisted characters.
+  * [x]  Required: Validate that phone numbers contain only the whitelisted characters.
+  * [x]  Required: Validate that email addresses contain only whitelisted characters.
+  * [x]  Required: Add *at least 5* other validations of your choosing.
 
 8\. [ ]  Required: Sanitization
   * [ ]  Required: All input and dynamic output should be sanitized.
