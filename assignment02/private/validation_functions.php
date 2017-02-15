@@ -44,10 +44,14 @@
   //My custom validation  unique usersname
   // has_valid_unique username_format
   function has_unique_username_format($value) {
-    $dup = mysql_query("SELECT username FROM users WHERE username='".$_POST['username']."'");
-        if(mysql_num_rows($dup) >0){
-            return false;}
+    global $db;
+    $sql = "SELECT * FROM users WHERE username='" . $value . "'";
+    $result = db_query($db, $sql);
+      if(db_num_rows($result) >0){
+            return false;
+          }
         else return true;
+
   }
 
   //My custom validation phone number

@@ -32,7 +32,7 @@
 
     if (is_blank($email)) {
       $errors[] = "Email cannot be blank.";
-    } elseif (!has_valid_email_format($email)) {
+    } elseif (has_valid_email_format($email) {
       $errors[] = "Email must be a valid format.";
     }
 

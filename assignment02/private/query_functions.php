@@ -534,7 +534,7 @@
 
     if (is_blank($user['email'])) {
       $errors[] = "Email cannot be blank.";
-    } elseif (!has_valid_email_format($user['email'])) {
+    } elseif (has_valid_email_format($user['email'])) {
       $errors[] = "Email must be a valid format.";
     }
 
@@ -544,6 +544,8 @@
       $errors[] = "Username must be less than 255 characters.";
     } elseif (!has_valid_username_format($user['username'])){
       $errors[] = "User name is not valid.";
+    } elseif (!has_unique_username_format($user['username'])){
+      $errors[] = "User name is already exist.";
     }
     return $errors;
   }
