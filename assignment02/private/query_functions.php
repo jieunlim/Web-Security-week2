@@ -137,6 +137,14 @@
     return $state_result;
   }
 
+  function find_state_name_by_id($id=0) {
+    global $db;
+    $sql = "SELECT name FROM states ";
+    $sql .= "WHERE id='" . $id . "';";
+    $state_result = db_query($db, $sql);
+    return $state_result;
+  }
+
   function validate_state($state, $errors=array()) {
     // TODO add validations
     if (is_blank($state['name'])) {
