@@ -37,7 +37,12 @@ $user = db_fetch_assoc($users_result);
     db_free_result($users_result);
   ?>
   <br />
-  <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a><br />
+  <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a>
+  <span style= "padding: 50px">
+    <a href="delete.php?id=<?php echo $user['id']; ?>">Delete</a>
+  </span>
+
+  <br />
 
 </div>
 

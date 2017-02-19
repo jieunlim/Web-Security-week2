@@ -43,11 +43,12 @@
 
   //My custom validation  unique usersname
   // has_valid_unique username_format
-  function has_unique_username_format($value) {
+  function has_unique_username_format($user) {
     global $db;
-    $sql = "SELECT * FROM users WHERE username='" . $value . "'";
+    $sql = "SELECT * FROM users WHERE username='" . $user['username'] . "'";
+    $sql .= "AND id !='" . $user['id'] . "'";
     $result = db_query($db, $sql);
-      if(db_num_rows($result) >0){
+      if(db_num_rows($result) >0){          
             return false;
           }
         else return true;
@@ -70,9 +71,16 @@ function has_valid_number_format($value) {
   else return false;
 }
 
-  //My custom validation for states
+  //My custom validation for name
   function has_valid_name_format($value) {
     if(preg_match("/^[a-zA-Z]+$/",$value)){
+      return true;
+    }
+    else return false;
+  }
+
+  function has_valid_name_format_with_space($value) {
+    if(preg_match("/^[a-zA-Z ]+$/",$value)){
       return true;
     }
     else return false;
@@ -84,6 +92,8 @@ function has_valid_number_format($value) {
     }
     else return false;
   }
+
+
 
   function has_valid_country_id_format($value) {
     if(preg_match("/^[0-9]+$/",$value)){

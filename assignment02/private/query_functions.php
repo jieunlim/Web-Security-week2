@@ -27,6 +27,8 @@
       $errors[] = "Name cannot be blank.";
     } elseif (!has_length($country['name'], array('max' => 255))) {
       $errors[] = "Name must be less than 255 characters.";
+    } elseif (!has_valid_name_format_with_space($country['name'])) {
+      $errors[] = "Name can only contain alphabets and spaces : A-Z, a-z.";
     }
 
 
@@ -396,8 +398,8 @@
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($salesperson['first_name'], array('max' => 255))) {
       $errors[] = "First name must be less than 255 characters.";
-    } elseif (!has_valid_username_format($salesperson['first_name'])){
-      $errors[] = "First name is not valid.";
+    } elseif (!has_valid_name_format($salesperson['first_name'])) {
+      $errors[] = "First name can only contain alphabets : A-Z, a-z.";
     }
 
 
@@ -405,8 +407,8 @@
       $errors[] = "Last name cannot be blank.";
     } elseif (!has_length($salesperson['last_name'], array('max' => 255))) {
       $errors[] = "Last name must be less than 255 characters.";
-    } elseif (!has_valid_username_format($salesperson['last_name'])){
-      $errors[] = "Last name is not valid.";
+    } elseif (!has_valid_name_format($salesperson['last_name'])) {
+      $errors[] = "Last name can only contain alphabets : A-Z, a-z.";
     }
 
     if (is_blank($salesperson['email'])) {
@@ -523,7 +525,9 @@
   function find_user_by_id($id=0) {
     global $db;
     $sql = "SELECT * FROM users WHERE id='" . $id . "' LIMIT 1;";
+
     $users_result = db_query($db, $sql);
+
     return $users_result;
   }
 
@@ -532,12 +536,16 @@
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
+    }elseif (!has_valid_name_format($user['first_name'])) {
+      $errors[] = "First name can only contain alphabets: A-Z, a-z.";
     }
 
     if (is_blank($user['last_name'])) {
       $errors[] = "Last name cannot be blank.";
     } elseif (!has_length($user['last_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
+    } elseif (!has_valid_name_format($user['last_name'])) {
+      $errors[] = "Last name can only contain alphabets : A-Z, a-z.";
     }
 
     if (is_blank($user['email'])) {
@@ -551,8 +559,8 @@
     } elseif (!has_length($user['username'], array('max' => 255))) {
       $errors[] = "Username must be less than 255 characters.";
     } elseif (!has_valid_username_format($user['username'])){
-      $errors[] = "User name is not valid.";
-    } elseif (!has_unique_username_format($user['username'])){
+      $errors[] = "User name is not valid. (A-Z, a-z, 0-9, and _)";
+    } elseif (!has_unique_username_format($user)){
       $errors[] = "User name is already exist.";
     }
     return $errors;
@@ -615,6 +623,28 @@
     } else {
       // The SQL UPDATE statement failed.
       // Just show the error, not the form
+      echo db_error($db);
+      db_close($db);
+      exit;
+    }
+  }
+
+  //delete user
+  function delete_user($user) {
+    global $db;
+
+    $sql ="DELETE FROM users ";
+    $sql .="WHERE id='" . db_escape($db, $user['id']). "' ";
+    $sql .= "LIMIT 1;";
+    // For update_user statments, $result is just true/false
+    $result = db_query($db, $sql);
+
+    if($result) {
+      return true;
+    } else {
+      // The SQL UPDATE statement failed.
+      // Just show the error, not the form
+
       echo db_error($db);
       db_close($db);
       exit;

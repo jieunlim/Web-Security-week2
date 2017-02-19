@@ -23,8 +23,8 @@
     echo "</tr>";
     while($country = db_fetch_assoc($country_result)) {
       echo "<tr>";
-      echo "<td>" . $country['name'] . "</td>";
-      echo "<td>" . $country['code'] . "</td>";
+      echo "<td>" . h($country['name']) . "</td>";
+      echo "<td>" . h($country['code']) . "</td>";
       echo "<td>";
       echo "<a href=\"show.php?id=".$country['id']."\">Show</a>";
       echo "</td>";
