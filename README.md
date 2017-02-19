@@ -1,6 +1,6 @@
 # Project 2 - Input/Output Sanitization
 
-Time spent: **X** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -38,11 +38,11 @@ The following **required** functionality is completed:
   * [x]  Required: Validate that email addresses contain only whitelisted characters.
   * [x]  Required: Add *at least 5* other validations of your choosing.
 
-8. [ ]  Required: Sanitization
-  * [ ]  Required: All input and dynamic output should be sanitized.
-  * [ ]  Required: Sanitize dynamic data for URLs
-  * [ ]  Required: Sanitize dynamic data for HTML
-  * [ ]  Required: Sanitize dynamic data for SQL
+8. [x]  Required: Sanitization
+  * [x]  Required: All input and dynamic output should be sanitized.
+  * [x]  Required: Sanitize dynamic data for URLs
+  * [x]  Required: Sanitize dynamic data for HTML
+  * [x]  Required: Sanitize dynamic data for SQL
 
 9. [ ]  Required: Penetration Testing
   * [ ]  Required: Verify form inputs are not vulnerable to SQLI attacks.
@@ -69,7 +69,7 @@ The following advanced user stories are optional:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/ayRxwzv.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
