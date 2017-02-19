@@ -193,7 +193,7 @@
     $sql .="VALUES (";
     $sql .="'".$state['name']."',";
     $sql .="'".$state['code']."',";
-    $sql .="'".$state['name']."'";
+    $sql .="'".$state['country_id']."'";
     $sql .= ");";
 
     // For INSERT statments, $result is just true/false
@@ -421,8 +421,8 @@
 
     if (is_blank($salesperson['phone'])) {
       $errors[] = "Phone cannot be blank.";
-    } elseif (!has_length($salesperson['phone'], array('max' => 255))) {
-      $errors[] = "Phone must be less than 255 characters.";
+    } elseif (!has_length($salesperson['phone'], array('min'=>10, 'max' => 14))) {
+      $errors[] = "Phone number must be between 10 and 14 numbers.";
     } elseif (!has_valid_phonenumber_format($salesperson['phone'])) {
       $errors[] = "Phone is not valid.";
     }

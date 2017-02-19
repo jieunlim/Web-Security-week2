@@ -32,8 +32,8 @@ if(is_post_request()) {
   <a href="index.php">Back to Users List</a><br />
 
   <h1>Delete User: <?php echo htmlspecialchars($user['first_name']) . " " . htmlspecialchars($user['last_name']); ?></h1>
-  <h3>Are you sure you want to permanently delete the user: </h3>
-
+  <li>Are you sure you want to <strong>permanently delete</strong> the user: </li>
+  <br />
   <?php echo display_errors($errors); ?>
 
   <form action="delete.php?id=<?php echo urlencode($user['id']);?>" method="post">

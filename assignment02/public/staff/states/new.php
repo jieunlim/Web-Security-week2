@@ -7,6 +7,8 @@ $state = array(
   'country_id' => ''
 );
 
+if(isset($_GET['id'])){$state['country_id'] = $_GET['id'];}
+
 if(is_post_request()) {
 
   // Confirm that values are present before accessing them.
