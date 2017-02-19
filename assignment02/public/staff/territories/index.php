@@ -23,14 +23,14 @@
     echo "</tr>";
     while($territory = db_fetch_assoc($territory_result)) {
       echo "<tr>";
-      echo "<td>" . $territory['name'] . "</td>";
-      echo "<td>" . $territory['state_id'] . "</td>";
-      echo "<td>" . $territory['position'] . "</td>";
+      echo "<td>" . htmlspecialchars($territory['name']) . "</td>";
+      echo "<td>" . htmlspecialchars($territory['state_id']) . "</td>";
+      echo "<td>" . htmlspecialchars($territory['position']) . "</td>";
       echo "<td>";
-      echo "<a href=\"show.php?id=".$territory['id']."\">Show</a>";
+      echo "<a href=\"show.php?id=".urlencode($territory['id'])."\">Show</a>";
       echo "</td>";
       echo "<td>";
-      echo "<a href=\"edit.php?id=".$territory['id']."\">Edit</a>";
+      echo "<a href=\"edit.php?id=".urlencode($territory['id'])."\">Edit</a>";
       echo "</td>";
       echo "</tr>";
     } // end while $states

@@ -23,13 +23,13 @@
     echo "</tr>";
     while($country = db_fetch_assoc($country_result)) {
       echo "<tr>";
-      echo "<td>" . h($country['name']) . "</td>";
-      echo "<td>" . h($country['code']) . "</td>";
+      echo "<td>" . htmlspecialchars($country['name']) . "</td>";
+      echo "<td>" . htmlspecialchars($country['code']) . "</td>";
       echo "<td>";
-      echo "<a href=\"show.php?id=".$country['id']."\">Show</a>";
+      echo "<a href=\"show.php?id=".urlencode($country['id'])."\">Show</a>";
       echo "</td>";
       echo "<td>";
-      echo "<a href=\"edit.php?id=".$country['id']."\">Edit</a>";
+      echo "<a href=\"edit.php?id=".urlencode($country['id'])."\">Edit</a>";
       echo "</td>";
       echo "</tr>";
     } // end while $countries

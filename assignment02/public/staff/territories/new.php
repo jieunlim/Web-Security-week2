@@ -8,14 +8,14 @@ $territory = array(
 );
 if(is_post_request()) {
  // Confirm that values are present before accessing them.
- if(isset($_POST['name'])) { $territory['name'] = $_POST['name']; }
- if(isset($_POST['position'])) { $territory['position'] = $_POST['position']; }
- if(isset($_POST['state_id'])) { $territory['state_id'] = $_POST['state_id']; }
+ if(isset($_POST['name'])) { $territory['name'] = htmlspecialchars($_POST['name']); }
+ if(isset($_POST['position'])) { $territory['position'] = htmlspecialchars($_POST['position']); }
+ if(isset($_POST['state_id'])) { $territory['state_id'] = htmlspecialchars($_POST['state_id']); }
 
  $result = insert_territory($territory);
  if($result === true) {
    $new_id = db_insert_id($db);
-   redirect_to('show.php?id=' . $new_id);
+   redirect_to('show.php?id=' . urlencode($new_id));
  } else {
    $errors = $result;
  }
@@ -26,7 +26,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="main-content">
-  <a href="../states/show.php?id=<?php echo $_GET['id']; ?> ">Back to State Details</a><br />
+  <a href="../states/show.php?id=<?php echo urlencode($_GET['id']); ?> ">Back to State Details</a><br />
 
   <h1>New Territory</h1>
 
@@ -34,13 +34,13 @@ if(is_post_request()) {
 
   <?php echo display_errors($errors); ?>
 
-  <form action="new.php?id=<?php echo $territory['state_id']; ?>"  method="post">
+  <form action="new.php?id=<?php echo urlencode($territory['state_id']); ?>"  method="post">
     Name:<br />
-    <input type="text" name="name" value="<?php echo $territory['name']; ?>" /><br />
+    <input type="text" name="name" value="<?php echo htmlspecialchars($territory['name']); ?>" /><br />
     Position:<br />
-    <input type="text" name="position" value="<?php echo $territory['position']; ?>" /><br />
+    <input type="text" name="position" value="<?php echo htmlspecialchars($territory['position']); ?>" /><br />
     <!--Hidden State Id: -->
-    <input type="hidden"  name="state_id" value="<?php echo $_GET['id']; ?>" /><br />
+    <input type="hidden"  name="state_id" value="<?php echo htmlspecialchars($_GET['id']); ?>" /><br />
 
     <br />
     <input type="submit" name="submit" value="Create"  />

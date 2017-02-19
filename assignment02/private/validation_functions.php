@@ -45,10 +45,13 @@
   // has_valid_unique username_format
   function has_unique_username_format($user) {
     global $db;
+    if(!isset($user['id'])){$user['id']=0;
+    }
     $sql = "SELECT * FROM users WHERE username='" . $user['username'] . "'";
     $sql .= "AND id !='" . $user['id'] . "'";
+
     $result = db_query($db, $sql);
-      if(db_num_rows($result) >0){          
+      if(db_num_rows($result) >0){
             return false;
           }
         else return true;

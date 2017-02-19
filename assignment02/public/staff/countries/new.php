@@ -10,13 +10,13 @@ $country = array(
 if(is_post_request()) {
 
   // Confirm that values are present before accessing them.
-  if(isset($_POST['name'])) { $country['name'] = $_POST['name']; }
-  if(isset($_POST['code'])) { $country['code'] = $_POST['code']; }
+  if(isset($_POST['name'])) { $country['name'] = htmlspecialchars($_POST['name']); }
+  if(isset($_POST['code'])) { $country['code'] = htmlspecialchars($_POST['code']); }
 
   $result = insert_country($country);
   if($result === true) {
     $new_id = db_insert_id($db);
-    redirect_to('show.php?id=' . $new_id);
+    redirect_to('show.php?id=' . urlencode($new_id));
   } else {
     $errors = $result;
   }
@@ -37,9 +37,9 @@ if(is_post_request()) {
 
   <form action="new.php" method="post">
     Name:<br />
-    <input type="text" name="name" value="<?php echo $country['name']; ?>" /><br />
+    <input type="text" name="name" value="<?php echo htmlspecialchars($country['name']); ?>" /><br />
     Code:<br />
-    <input type="text" name="code" value="<?php echo $country['code']; ?>" /><br />
+    <input type="text" name="code" value="<?php echo htmlspecialchars($country['code']); ?>" /><br />
     <br />
     <input type="submit" name="submit" value="Create"  />
   </form>

@@ -4,52 +4,52 @@
 if(!isset($_GET['id'])) {
   redirect_to('index.php');
 }
-$id = $_GET['id'];
+$id = htmlspecialchars($_GET['id']);
 $state_result = find_state_by_id($id);
 // No loop, only one result
 $state = db_fetch_assoc($state_result);
 ?>
 
-<?php $page_title = 'Staff: State of ' . $state['name']; ?>
+<?php $page_title = 'Staff: State of ' . htmlspecialchars($state['name']); ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="main-content">
   <a href="index.php ">Back to States List</a><br />
 
-  <h1>State: <?php echo $state['name']; ?></h1>
+  <h1>State: <?php echo htmlspecialchars($state['name']); ?></h1>
 
   <?php
     echo "<table id=\"state\">";
     echo "<tr>";
     echo "<td>Name: </td>";
-    echo "<td>" . $state['name'] . "</td>";
+    echo "<td>" . htmlspecialchars($state['name']) . "</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>Code: </td>";
-    echo "<td>" . $state['code'] . "</td>";
+    echo "<td>" . htmlspecialchars($state['code']) . "</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>Country ID: </td>";
-    echo "<td>" . $state['country_id'] . "</td>";
+    echo "<td>" . htmlspecialchars($state['country_id']) . "</td>";
     echo "</tr>";
     echo "</table>";
 ?>
     <br />
-    <a href="edit.php?id=<?php echo $state['id']; ?>">Edit</a><br />
+    <a href="edit.php?id=<?php echo urlencode($state['id']); ?>">Edit</a><br />
     <hr />
 
     <h2>Territories</h2>
     <br />
-    <a href="../territories/new.php?id=<?php echo $state['id']; ?>">Add a Territory</a><br />
+    <a href="../territories/new.php?id=<?php echo urlencode($state['id']); ?>">Add a Territory</a><br />
 
 <?php
-    $territory_result = find_territories_for_state_id($state['id']);
+    $territory_result = find_territories_for_state_id(htmlspecialchars($state['id']));
 
     echo "<ul id=\"territories\">";
     while($territory = db_fetch_assoc($territory_result)) {
       echo "<li>";
-      echo "<a href=\"../territories/show.php?id=" .$territory['id']."\">";
-      echo $territory['name'];
+      echo "<a href=\"../territories/show.php?id=" .urlencode($territory['id'])."\">";
+      echo htmlspecialchars($territory['name']);
       echo "</a>";
       echo "</li>";
     } // end while $territory
