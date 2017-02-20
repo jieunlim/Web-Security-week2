@@ -44,12 +44,12 @@ The following **required** functionality is completed:
   * [x]  Required: Sanitize dynamic data for HTML
   * [x]  Required: Sanitize dynamic data for SQL
 
-9. [ ]  Required: Penetration Testing
-  * [ ]  Required: Verify form inputs are not vulnerable to SQLI attacks.
-  * [ ]  Required: Verify query strings are not vulnerable to SQLI attacks.
-  * [ ]  Required: Verify form inputs are not vulnerable to XSS attacks.
-  * [ ]  Required: Verify query strings are not vulnerable to XSS attacks.
-  * [ ]  Required: Listed other bugs or security vulnerabilities
+9. [x]  Required: Penetration Testing
+  * [x]  Required: Verify form inputs are not vulnerable to SQLI attacks.
+  * [x]  Required: Verify query strings are not vulnerable to SQLI attacks.
+  * [x]  Required: Verify form inputs are not vulnerable to XSS attacks.
+  * [x]  Required: Verify query strings are not vulnerable to XSS attacks.
+  * [x]  Required: Listed other bugs or security vulnerabilities
 
 
 The following advanced user stories are optional:
@@ -69,7 +69,7 @@ The following advanced user stories are optional:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/ayRxwzv.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/sAXO64O.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
