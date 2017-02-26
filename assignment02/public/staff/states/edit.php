@@ -39,7 +39,7 @@ if(is_post_request()) {
 
   <!-- TODO add form -->
  <?php echo display_errors($errors); ?>
-  <form action="edit.php?id=<?php echo urlencode($state['id']); ?>" method="post">
+  <form action="edit.php?id=<?php echo htmlspecialchars($state['id']); ?>" method="post">
     Name:<br />
     <input type="text" name="name" value="<?php echo htmlspecialchars($state['name']); ?>" /><br />
     Code:<br />
